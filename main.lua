@@ -1,18 +1,16 @@
 function love.load()
-    require("modules.easyTimer")
-    temporizador = timer_class.new(0, 0, 1, false, false)
+    require("modules.textMaker")
 end
 
 function love.update(dt)
-    temporizador:update(dt)
+    textbox_class:update(dt)
 end
 
 function love.keypressed(key)
-    if key == "escape" then
-        love.event.quit()
-    end
+
 end
 
 function love.draw()
-    love.graphics.print(math.ceil(temporizador.currentTime))
+    love.graphics.draw(love.graphics.newImage("rs/general/bg.png"))
+    textbox_class:draw(dt)
 end

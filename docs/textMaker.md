@@ -8,10 +8,10 @@ You may create one with the subsequent parameters:
 ```lua
 require("pathTo.textMaker")
 
-myTextbox = textbox_class.new( (Will appear at bottom?, a boolean), (Speed, int recommended), (lines, a table of strings), (red value, int recommended), (green value, int recommended), (blue value, int recommended), (Alpha value, a number) )
+myTextbox = Textbox_class.new( (Will appear at bottom?, a boolean), (Speed, int recommended), (lines, a table of strings), (red value, int recommended), (green value, int recommended), (blue value, int recommended), (Alpha value, a number) )
 ```
 
-"textbox_class" is a global variable. But you must require the module for safety.
+"Textbox_class" is a global variable. But you must require the module for safety.
 
 By default, the .new() arguments are the following:
 ```lua
@@ -33,7 +33,7 @@ true, 2, typewriter_lines = {"Whats so green about this...", "Lorem ipsum dolor 
 
 function love.load()
 	require("modules.textMaker")
-	hola = textbox_class.new(false, 10, { "aaaaaaaaaaaa", "bbbbbbbbbbbb" }, 1, 1, 1, 1)
+	hola = Textbox_class.new(false, 10, { "aaaaaaaaaaaa", "bbbbbbbbbbbb" }, 1, 1, 1, 1)
 end
 
 function love.update(dt)

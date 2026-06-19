@@ -1,40 +1,19 @@
+local myTextbox
+
 function love.load()
 	require("modules.textMaker")
-	hola = textbox_class.new(true, 20, { "Doesn't this feel...", "...", "Sussy", "Bluddd"},1, 1, 1, 1, "Ninten")
+	myTextbox = Textbox_class.new(true, 20, {"Hola que tal", "Como estas", "Yo bien y tu"})
+	myTextbox:setIn(true)
 end
 
 function love.update(dt)
-	hola:update(dt)
-	if hola.typewriter_linesIndex == 3 then
-		hola:changeColor(1, 0, 0, 1)
-	end
+	myTextbox:update(dt)
 end
 
 function love.keypressed(key)
-	hola:keypressed(key)
-	if hola.general_isIn == false then
-		if key == "a" then
-			hola:setIn(true)
-		end
-	end
-	if key == "1" then
-		hola:setAtBottom(true)
-	end
-
-	if key == "2" then
-		hola:setAtBottom(false)
-		hola:setPitch("Low")
-	end
-
-	if key == "3" then
-		hola:modifyName(0, 1, 0, 1, "Ness")
-	end
-	if key == "4" then
-		hola:modifyName(1, 1, 0, 1, "removeName")
-	end
+	myTextbox:keypressed(key)
 end
 
 function love.draw()
-	love.graphics.draw(love.graphics.newImage("rs/general/bg.png"))
-	hola:draw(dt)
+	myTextbox:draw()
 end

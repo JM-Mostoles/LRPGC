@@ -1,4 +1,4 @@
-timer_class = {
+Timer_class = {
 	startAt = 0,
 	finishAt = 0,
 	currentTime = 0,
@@ -7,23 +7,23 @@ timer_class = {
 	isPaused = false,
 }
 
-function timer_class:paused(bool)
+function Timer_class:paused(bool)
 	self.isPaused = bool
 end
 
-function timer_class:alternatePause()
+function Timer_class:alternatePause()
 	self.isPaused = not self.isPaused
 end
 
-function timer_class:willLoop(bool)
+function Timer_class:willLoop(bool)
 	self.loops = bool
 end
 
-function timer_class:toggleLoop()
+function Timer_class:toggleLoop()
 	self.loops = not self.loops
 end
 
-function timer_class:update(dt)
+function Timer_class:update(dt)
 	if self.isPaused == false then
 		self.currentTime = self.currentTime - (self.speed * dt)
 
@@ -39,9 +39,9 @@ function timer_class:update(dt)
 end
 
 local metaTimer = {}
-metaTimer.__index = timer_class
+metaTimer.__index = Timer_class
 
-function timer_class.new(startAt, finishAt, speed, loops, startPaused)
+function Timer_class.new(startAt, finishAt, speed, loops, startPaused)
 	local instance = setmetatable({}, metaTimer)
 
 	instance.startAt = startAt or 10

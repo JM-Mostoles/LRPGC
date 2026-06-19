@@ -3,7 +3,7 @@
 
 ## What is this?  
 
-LÖVE RPG Creator (LRPGC) is a set of libraries which make creating RPG's much easier in the Lua's framework, LÖVE. These are free to use, licensed under the MIT license, and built in a modular way so you can use these anywhere.
+LÖVE RPG Creator (LRPGC) is a set of libraries which make creating RPG's much easier in the Lua's framework, [LÖVE](https://github.com/love2d/love). These are free to use, licensed under the MIT license, and built in a modular way so you can use these anywhere.
 
 ## Whats included?
 

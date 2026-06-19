@@ -1,4 +1,4 @@
-Timer_class = {
+FacilTimer_class = {
 	startAt = 0,
 	finishAt = 0,
 	currentTime = 0,
@@ -7,23 +7,23 @@ Timer_class = {
 	isPaused = false,
 }
 
-function Timer_class:paused(bool)
+function FacilTimer_class:paused(bool)
 	self.isPaused = bool
 end
 
-function Timer_class:alternatePause()
+function FacilTimer_class:alternatePause()
 	self.isPaused = not self.isPaused
 end
 
-function Timer_class:willLoop(bool)
+function FacilTimer_class:willLoop(bool)
 	self.loops = bool
 end
 
-function Timer_class:toggleLoop()
+function FacilTimer_class:toggleLoop()
 	self.loops = not self.loops
 end
 
-function Timer_class:update(dt)
+function FacilTimer_class:update(dt)
 	if self.isPaused == false then
 		self.currentTime = self.currentTime - (self.speed * dt)
 
@@ -36,12 +36,16 @@ function Timer_class:update(dt)
 			end
 		end
 	end
+
+	if self.loops == true and self.currentTime == self.finishAt then
+		self:paused(false)
+	end
 end
 
 local metaTimer = {}
-metaTimer.__index = Timer_class
+metaTimer.__index = FacilTimer_class
 
-function Timer_class.new(startAt, finishAt, speed, loops, startPaused)
+function FacilTimer_class.new(startAt, finishAt, speed, loops, startPaused)
 	local instance = setmetatable({}, metaTimer)
 
 	instance.startAt = startAt or 10

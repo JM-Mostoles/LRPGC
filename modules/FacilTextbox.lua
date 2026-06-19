@@ -1,5 +1,5 @@
 -- Class properties
-Textbox_class = {
+FacilTextbox_class = {
 	-- Textbox generals, image and position.
 	general_isIn = false,
 	general_X = (256 / 2),
@@ -47,20 +47,20 @@ Textbox_class = {
 }
 
 -- Other class atributes
-Textbox_class.text_full = Textbox_class.typewriter_lines[Textbox_class.typewriter_linesIndex]
-Textbox_class.oX = math.floor(Textbox_class.general_textbox:getWidth() / 2)
-Textbox_class.oY = math.floor(Textbox_class.general_textbox:getHeight() / 2)
-Textbox_class.currentPitch = Textbox_class.audio_tickHighPitch
+FacilTextbox_class.text_full = FacilTextbox_class.typewriter_lines[FacilTextbox_class.typewriter_linesIndex]
+FacilTextbox_class.oX = math.floor(FacilTextbox_class.general_textbox:getWidth() / 2)
+FacilTextbox_class.oY = math.floor(FacilTextbox_class.general_textbox:getHeight() / 2)
+FacilTextbox_class.currentPitch = FacilTextbox_class.audio_tickHighPitch
 
 -- Class methods
-function Textbox_class:changeColor(r, g, b, a)
+function FacilTextbox_class:changeColor(r, g, b, a)
 	self.typewriter_r = r
 	self.typewriter_g = g
 	self.typewriter_b = b
 	self.typewriter_a = a
 end
 
-function Textbox_class:modifyName(r, g, b, a, newSpeaker)
+function FacilTextbox_class:modifyName(r, g, b, a, newSpeaker)
 	self.nameLabel_r = r
 	self.nameLabel_g = g
 	self.nameLabel_b = b
@@ -71,14 +71,14 @@ function Textbox_class:modifyName(r, g, b, a, newSpeaker)
 	end
 end
 
-function Textbox_class:setIn(bool)
+function FacilTextbox_class:setIn(bool)
 	self.typewriter_linesIndex = 1
 	self.typewriter_letterCount = 1
 	self.general_isIn = bool
 	self:changeColor(1, 1, 1, 1)
 end
 
-function Textbox_class:next()
+function FacilTextbox_class:next()
 	self.typewriter_letterCount = 1
 	if self.typewriter_lines[self.typewriter_linesIndex + 1] ~= nil then
 		self.typewriter_linesIndex = self.typewriter_linesIndex + 1
@@ -87,19 +87,19 @@ function Textbox_class:next()
 	end
 end
 
-function Textbox_class:setAtBottom(bool)
+function FacilTextbox_class:setAtBottom(bool)
 	self.general_isAtBottom = bool
 end
 
-function Textbox_class:setPitch(pitch)
+function FacilTextbox_class:setPitch(pitch)
 	if pitch == "High" then
-		Textbox_class.currentPitch = Textbox_class.audio_tickHighPitch
+		FacilTextbox_class.currentPitch = FacilTextbox_class.audio_tickHighPitch
 	elseif pitch == "Low" then
-		Textbox_class.currentPitch = Textbox_class.audio_tickLowPitch
+		FacilTextbox_class.currentPitch = FacilTextbox_class.audio_tickLowPitch
 	end
 end
 
-function Textbox_class:update(dt)
+function FacilTextbox_class:update(dt)
 
 	if self.general_isIn then
 
@@ -145,7 +145,7 @@ function Textbox_class:update(dt)
 	end
 end
 
-function Textbox_class:keypressed(key)
+function FacilTextbox_class:keypressed(key)
 
 	if self.general_isIn then
 
@@ -167,7 +167,7 @@ function Textbox_class:keypressed(key)
 	end
 end
 
-function Textbox_class:draw()
+function FacilTextbox_class:draw()
 	if self.general_isIn then
 		-- Textbox
 		love.graphics.draw(self.general_textbox, self.general_X, self.general_Y, 0, 1, 1, self.oX, self.oY)
@@ -178,14 +178,14 @@ function Textbox_class:draw()
 		if self.nameLabel_name == nil then
 			love.graphics.print(
 				self.typewriter_shownText,
-				Textbox_class.typewriter_font,
+				FacilTextbox_class.typewriter_font,
 				((self.general_X - self.oX) + 9),
 				((self.general_Y - self.oY) + 9)
 			)
 		else
 			love.graphics.print(
 				self.typewriter_shownText,
-				Textbox_class.typewriter_font,
+				FacilTextbox_class.typewriter_font,
 				((self.general_X - self.oX) + 9),
 				((self.general_Y - self.oY) + 15)
 			)
@@ -209,14 +209,14 @@ function Textbox_class:draw()
 			if self.general_isAtBottom then
 				love.graphics.print(
 					self.nameLabel_name .. ":",
-					Textbox_class.typewriter_font,
+					FacilTextbox_class.typewriter_font,
 					(self.general_X - self.oX) + 9,
 					(self.general_Y - self.oY) + 6
 				)
 			else
 				love.graphics.print(
 					self.nameLabel_name .. ":",
-					Textbox_class.typewriter_font,
+					FacilTextbox_class.typewriter_font,
 					(self.general_X - self.oX) + 9,
 					(self.general_Y - self.oY) + 6
 				)
@@ -229,14 +229,14 @@ end
 --Constructor
 
 local metaBox = {}
-metaBox.__index = Textbox_class
+metaBox.__index = FacilTextbox_class
 
-function Textbox_class.new(bottom, typewriter_speed, typewriter_lines, r, g, b, a, speaker)
+function FacilTextbox_class.new(bottom, typewriter_speed, typewriter_lines, r, g, b, a, speaker)
 	local textInstance = setmetatable({}, metaBox)
 
 	textInstance.general_isAtBottom = bottom == true
 	textInstance.typewriter_speed = typewriter_speed or 2
-	textInstance.typewriter_lines = typewriter_lines or Textbox_class.typewriter_lines
+	textInstance.typewriter_lines = typewriter_lines or FacilTextbox_class.typewriter_lines
 	textInstance.typewriter_r = r or 1
 	textInstance.typewriter_g = g or 1
 	textInstance.typewriter_b = b or 1

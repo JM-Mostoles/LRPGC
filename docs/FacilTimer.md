@@ -2,19 +2,21 @@
 
 ## Usage
 
-FacilTimer is a very plain and simple chronometer type of countdown, to create one, you must use the following statement at the logic where you're gonna make the timer:
+FacilTimer is a very plain and simple chronometer type of countdown, to create one, you must use the following arguments at the block where you're gonna instanciate the timer:
 
 ```lua
-timerName = FacilTimer_class.new(
+function love.load()
+    local FacilTimer = require("modules.FacilTimer")
+
+    timerName = FacilTimer.new(
 	(Start at, int recommended), 
 	(Finish at, int recommended), 
 	(Speed, int recommended), 
 	(Loops, a boolean), 
 	(Starts paused? a boolean) 
 	)
+end
 ```
-
-"FacilTimer_class" is a global variable. But you must require the module for safety.
 
 By default, the .new() arguments are the following:
 ```lua
@@ -38,8 +40,8 @@ By default, the .new() arguments are the following:
 local myTimer
 
 function love.load()
-    require("modules.FacilTimer")
-    myTimer = FacilTimer_class.new(10, 0, 5, true, true)
+    local FacilTimer = require("modules.FacilTimer")
+    myTimer = FacilTimer.new(10, 0, 5, true, true)
 end
 
 function love.update(dt)

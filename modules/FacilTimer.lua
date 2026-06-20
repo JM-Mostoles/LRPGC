@@ -1,4 +1,4 @@
-FacilTimer_class = {
+local FacilTimer_class = {
 	startAt = 0,
 	finishAt = 0,
 	currentTime = 0,
@@ -57,3 +57,5 @@ function FacilTimer_class.new(startAt, finishAt, speed, loops, startPaused)
 
 	return instance
 end
+
+return FacilTimer_class

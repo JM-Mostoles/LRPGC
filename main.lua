@@ -4,7 +4,7 @@ end
 function love.update(dt)
 end
 
-function love.keyreleased(key)
+function love.keypressed(key)
 end
 
 function love.draw()

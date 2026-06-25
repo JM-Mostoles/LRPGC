@@ -1,4 +1,6 @@
-local function FacilObject(objectWorld, oX, oY, oW, oH)
+FacilObject = {}
+
+function FacilObject.new(objectWorld, oX, oY, oW, oH)
     local newObject = {
         body = love.physics.newBody(objectWorld, oX, oY, "static"),
         shape = love.physics.newRectangleShape(oW, oH)

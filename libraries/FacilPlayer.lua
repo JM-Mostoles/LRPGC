@@ -1,42 +1,58 @@
-local function newPlayer(playerWorld, pX, pY, pW, pH, pSpeed)
-    local FacilPlayer = {
+local FacilPlayer = {}
+
+function FacilPlayer.new(playerWorld, pX, pY, pW, pH, pSpeed)
+    local newPlayer = {
         body = love.physics.newBody(playerWorld, pX, pY, "dynamic"),
         shape = love.physics.newRectangleShape(pW, pH),
-        speed = pSpeed,
+        currentSpeed = pSpeed,
+        speedReal = pSpeed,
+        speedNorm = pSpeed - (pSpeed * 0.4),
+        xDir = 0,
+        yDir = 0,
         dx = 0,
         dy = 0
     }
-    FacilPlayer.fixture = love.physics.newFixture(FacilPlayer.body, FacilPlayer.shape)
+    newPlayer.fixture = love.physics.newFixture(newPlayer.body, newPlayer.shape)
 
-    function FacilPlayer:update(dt)
+    function newPlayer:update(dt)
         self.dx, self.dy = 0, 0
+        self.xDir, self.yDir = 0, 0
+        self.rightKey = love.keyboard.isDown("right")
+        self.leftKey = love.keyboard.isDown("left")
+        self.upKey = love.keyboard.isDown("up")
+        self.downKey = love.keyboard.isDown("down")
 
-        if love.keyboard.isDown("left") then
-            self.dx = -self.speed
+        if self.leftKey and self.xDir == 0 then self.xDir = -1 end
+        if self.rightKey and self.xDir == 0 then self.xDir = 1 end
+        if self.upKey and self.yDir == 0 then self.yDir = -1 end
+        if self.downKey and self.yDir == 0 then self.yDir = 1 end
+
+        if (self.xDir == 1) then
+            self.dx = self.currentSpeed
         end
 
-        if love.keyboard.isDown("right") then
-            self.dx = self.speed
+        if (self.xDir == -1) then
+            self.dx = -self.currentSpeed
         end
 
-        if love.keyboard.isDown("up") then
-            self.dy = -self.speed
+        if (self.yDir == 1) then
+            self.dy = self.currentSpeed
         end
 
-        if love.keyboard.isDown("down") then
-            self.dy = self.speed
+        if (self.yDir == -1) then
+            self.dy = -self.currentSpeed
         end
 
-        local len = math.sqrt(self.dx * self.dx + self.dy * self.dy)
-
-        if len > 0 then
-            self.dx = self.dx / len * self.speed
-            self.dy = self.dy / len * self.speed
+        if (self.leftKey or self.rightKey) and (self.upKey and self.downKey) then
+            self.currentSpeed = self.speedNorm
+        else
+            self.currentSpeed = self.speedReal
         end
+
         self.body:setLinearVelocity(self.dx, self.dy)
     end
 
-    function FacilPlayer:draw(dt)
+    function newPlayer:draw(dt)
         local x, y = self.body:getPosition()
         local x2, y2 = pW / 2, pH / 2
         love.graphics.rectangle(
@@ -48,7 +64,7 @@ local function newPlayer(playerWorld, pX, pY, pW, pH, pSpeed)
         )
     end
 
-    return FacilPlayer
+    return newPlayer
 end
 
-return newPlayer
+return FacilPlayer

@@ -9,14 +9,13 @@ These 2 libraries recieve a world as an argument. To create one, we do the follo
 ```lua
 local world = love.physics.newWorld(0, 0, true)
 ```
----
 Please do notice, world needs the update methods :update(dt) in our update function.
 ```lua
 function love.update(dt)
     world:update(dt)
 end
 ```
-
+---
 ### Creating a new player with FacilPlayer
 We must pass the following arguments to the .new function:
 ```lua
@@ -33,7 +32,7 @@ As an example:
 ```lua
 newPlayer = playerLib.new(world, 20, 20, 10, 4, 100)
 ```
----
+
 We will require the following methods for the player to work correctly:
 
 ```lua

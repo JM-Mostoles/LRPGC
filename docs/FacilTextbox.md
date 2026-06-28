@@ -23,8 +23,6 @@ function love.load()
 end
 ```
 
-"FacilTextbox_class" is a global variable. But you must require the module for safety.
-
 By default, the .new() arguments are the following:
 ```lua
 true, 2, {"Whats so green about this...", "Lorem ipsum dolor sit amet", "Morbi vestibulum euismod", "Sed malesuada augue lacus"}, 1, 1, 1, 1
@@ -32,7 +30,7 @@ true, 2, {"Whats so green about this...", "Lorem ipsum dolor sit amet", "Morbi v
 
 ## Methods
 
-- setIn(boolean)
+- :setIn(boolean)
 - :setAtBottom(bool)
 - :changeColor(red value, green value, blue value, alpha value)  
 [Changes color of the text.]
@@ -54,7 +52,7 @@ true, 2, {"Whats so green about this...", "Lorem ipsum dolor sit amet", "Morbi v
 local myTextbox
 
 function love.load()
-	local FacilTextbox = require("modules.FacilTextbox")
+	local FacilTextbox = require("libraries.FacilTextbox")
 	myTextbox = FacilTextbox.new(true, 20, { "Like the wind", "you came running" }, 1, 1, 1, 1)
 end
 

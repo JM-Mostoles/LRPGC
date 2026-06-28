@@ -38,10 +38,13 @@ function FacilFade.new(startIn, speed, r, g, b)
     local FadeInstance = setmetatable({}, metaFade)
 
     FadeInstance.isIn = startIn
-    FadeInstance.speed = speed
-    FadeInstance.r = r
-    FadeInstance.g = g
-    FadeInstance.b = b
+    if startIn == false then
+        FadeInstance.alpha = 0
+    end
+    FadeInstance.speed = speed or 1
+    FadeInstance.r = r or 1
+    FadeInstance.g = g or 1
+    FadeInstance.b = b or 1
 
     return FadeInstance
 end

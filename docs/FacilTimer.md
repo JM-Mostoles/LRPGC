@@ -42,7 +42,7 @@ By default, the .new() arguments are the following:
 local myTimer
 
 function love.load()
-    local FacilTimer = require("modules.FacilTimer")
+    local FacilTimer = require("libraries.FacilTimer")
     myTimer = FacilTimer.new(10, 0, 5, true, true)
 end
 

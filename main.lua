@@ -1,18 +1,25 @@
+local playerLib = require("libraries.FacilPlayer")
+local objectLib = require("libraries.FacilObject")
+
+local world
+local newPlayer
+local newObject
+
 function love.load()
-    hi = require("libraries.FacilAnimPlayer")
-    yo = hi.newAnimation(love.graphics.newImage("rs/boyagobb.png"), 4, 2, 2, 10)
+    world = love.physics.newWorld(0, 0, true)
+    newPlayer = playerLib.new(world, 20, 20, 10, 4, 100)
 end
 
 function love.update(dt)
-    yo:update(dt)
+    newPlayer:update(dt)
+    world:update(dt)
 end
 
 function love.keypressed(key)
-    if key == "q" then
-        yo:togglePause()
-    end
+
 end
 
 function love.draw()
-    yo:play()
+    newPlayer:draw()
+
 end

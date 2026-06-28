@@ -1,6 +1,6 @@
 local FacilAnimPlayer = {}
 
-function FacilAnimPlayer.newAnimation(image, horizontalFrames, rows, rowToPlay, speed)
+function FacilAnimPlayer.newAnimation(image, horizontalFrames, rows, rowToPlay, speed, xPos, yPos)
     local newAnimatedObject =
     {
         image = image,
@@ -11,7 +11,9 @@ function FacilAnimPlayer.newAnimation(image, horizontalFrames, rows, rowToPlay, 
         timer = 1,
         index = 1,
         isPaused = false,
-        quadRows = {}
+        quadRows = {},
+        X = xPos,
+        Y = yPos
     }
     newAnimatedObject.imageW = newAnimatedObject.image:getWidth()
     newAnimatedObject.imageH = newAnimatedObject.image:getHeight()
@@ -65,7 +67,7 @@ function FacilAnimPlayer.newAnimation(image, horizontalFrames, rows, rowToPlay, 
     end
 
     function newAnimatedObject:play()
-        love.graphics.draw(self.image, self.quadRows[self.rowToDisplay][self.index])
+        love.graphics.draw(self.image, self.quadRows[self.rowToDisplay][self.index], self.X, self.Y)
     end
 
     return newAnimatedObject

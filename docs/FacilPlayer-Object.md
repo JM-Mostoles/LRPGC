@@ -45,4 +45,66 @@ function love.draw()
     newPlayer:draw()
 end
 ```
+---
+### Creating a new collisioning object with FacilObject
 
+FacilObject works in a similar way as FacilPlayer. No need to update it, as only creating it in the world will be more than enough in order to make the player collide, drawing it is not necessary, however, we will be doing it for this example.
+
+To create a collisioning object, we call the .new method with the following parameters;
+
+```lua
+local objectLib = require("libraries.FacilObject")
+newObject = objectLib.new(
+    world, 
+    (Position in X, int recommended), 
+    (Position in Y, int recommended), 
+    (Width, int recommended), 
+    (Height, int recommended)
+    )
+```
+
+And we can draw the object with 
+
+```lua
+function love.draw()
+    newObject:draw()
+end
+```
+
+And with that, we now have an object created!
+
+## Example of full usage
+
+```lua
+
+-- Main.lua
+
+local playerLib = require("libraries.FacilPlayer")
+local objectLib = require("libraries.FacilObject")
+
+local world
+local newPlayer
+local newObject
+
+function love.load()
+    world = love.physics.newWorld(0, 0, true)
+    newPlayer = playerLib.new(world, 20, 20, 10, 4, 100)
+    newObject = objectLib.new(world, 90, 80, 30, 30)
+end
+
+function love.update(dt)
+    newPlayer:update(dt)
+    world:update(dt)
+end
+
+function love.keypressed(key)
+
+end
+
+function love.draw()
+    newPlayer:draw()
+    newObject:draw()
+
+end
+
+```

@@ -1,24 +1,27 @@
-local animLib = require("libraries.FacilAnimPlayer")
-local myNewAnimation
+local myTextbox
 
 function love.load()
-    love.graphics.setDefaultFilter("nearest", "nearest")
-    myNewAnimation = animLib.newAnimation(love.graphics.newImage("rs/boyagobb.png"), 4, 2, 1, 5, 150, 120, 7, 31)
+	local FacilTextbox = require("libraries.FacilTextbox")
+	myTextbox = FacilTextbox.newTextboxObject(true, 20, { "Like the wind", "you came running", "Waoawoaw" }, 1, 1, 1, 1)
 end
 
 function love.update(dt)
-    myNewAnimation:update(dt)
-end
+	myTextbox:update(dt)
+        if myTextbox.typewriter_linesIndex == 2 then
+            myTextbox:modifyName(1, 0, 1, 1, "FEX")
+            myTextbox:changeColor(1, 1, 0, 1)
+        end
+    end
 
 function love.keypressed(key)
-    if key == "w" then
-        myNewAnimation:changeDisplayedRow(1)
-    end
-    if key == "q" then
-        myNewAnimation:changeDisplayedRow(2)
-    end
+	myTextbox:keypressed(key)
+	if myTextbox.general_isIn == false then
+		if key == "a" then
+			myTextbox:setIn(true)
+		end
+	end
 end
 
 function love.draw()
-    myNewAnimation:play()
+	myTextbox:draw()
 end

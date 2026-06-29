@@ -1,6 +1,6 @@
 FacilObject = {}
 
-function FacilObject.new(objectWorld, oX, oY, oW, oH)
+function FacilObject.newColliderObject(objectWorld, oX, oY, oW, oH)
     local newObject = {
         body = love.physics.newBody(objectWorld, oX, oY, "static"),
         shape = love.physics.newRectangleShape(oW, oH)

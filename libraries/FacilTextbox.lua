@@ -234,7 +234,7 @@ end
 local metaBox = {}
 metaBox.__index = FacilTextbox_class
 
-function FacilTextbox_class.new(bottom, typewriter_speed, typewriter_lines, r, g, b, a, speaker)
+function FacilTextbox_class.newTextboxObject(bottom, typewriter_speed, typewriter_lines, r, g, b, a, speaker)
 	local textInstance = setmetatable({}, metaBox)
 
 	textInstance.general_isAtBottom = bottom == true

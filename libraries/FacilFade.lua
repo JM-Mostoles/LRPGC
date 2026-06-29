@@ -34,7 +34,7 @@ end
 local metaFade = {}
 metaFade.__index = FacilFade
 
-function FacilFade.new(startIn, speed, r, g, b)
+function FacilFade.newFadeObject(startIn, speed, r, g, b)
     local FadeInstance = setmetatable({}, metaFade)
 
     FadeInstance.isIn = startIn

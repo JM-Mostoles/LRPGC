@@ -8,7 +8,7 @@ FacilTimer is a very plain and simple chronometer type of countdown, to create o
 function love.load()
     local FacilTimer = require("modules.FacilTimer")
 
-    timerName = FacilTimer.new(
+    timerName = FacilTimer.newTimerObject(
 	(Start at, int recommended), 
 	(Finish at, int recommended), 
 	(Speed, int recommended), 
@@ -18,7 +18,7 @@ function love.load()
 end
 ```
 
-By default, the .new() arguments are the following:
+By default, the .newTimerObject() arguments are the following:
 ```lua
 1, 0, 1, false, true
 ```
@@ -43,7 +43,7 @@ local myTimer
 
 function love.load()
     local FacilTimer = require("libraries.FacilTimer")
-    myTimer = FacilTimer.new(10, 0, 5, true, true)
+    myTimer = FacilTimer.newTimerObject(10, 0, 5, true, true)
 end
 
 function love.update(dt)

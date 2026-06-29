@@ -17,9 +17,9 @@ end
 ```
 ---
 ### Creating a new player with FacilPlayer
-We must pass the following arguments to the .new function:
+We must pass the following arguments to the .newColliderPlayer function:
 ```lua
-newPlayer = playerLib.new(
+newPlayer = playerLib.newColliderPlayer(
     (World, our world), 
     (Position in X, the stating position in X. Int recommended), 
     (Position in Y, the stating position in Y. Int recommended), 
@@ -30,7 +30,7 @@ newPlayer = playerLib.new(
 ```
 As an example:
 ```lua
-newPlayer = playerLib.new(world, 20, 20, 10, 4, 100)
+newPlayer = playerLib.newColliderPlayer(world, 20, 20, 10, 4, 100)
 ```
 
 We will require the following methods for the player to work correctly:
@@ -50,11 +50,11 @@ end
 
 FacilObject works in a similar way as FacilPlayer. No need to update it, as only creating it in the world will be more than enough in order to make the player collide, drawing it is not necessary, however, we will be doing it for this example.
 
-To create a collisioning object, we call the .new method with the following parameters;
+To create a collisioning object, we call the .newColliderObject method with the following parameters;
 
 ```lua
 local objectLib = require("libraries.FacilObject")
-newObject = objectLib.new(
+newObject = objectLib.newColliderObject(
     world, 
     (Position in X, int recommended), 
     (Position in Y, int recommended), 
@@ -88,8 +88,8 @@ local newObject
 
 function love.load()
     world = love.physics.newWorld(0, 0, true)
-    newPlayer = playerLib.new(world, 20, 20, 10, 4, 100)
-    newObject = objectLib.new(world, 90, 80, 30, 30)
+    newPlayer = playerLib.newColliderPlayer(world, 20, 20, 10, 4, 100)
+    newObject = objectLib.newColliderObject(world, 90, 80, 30, 30)
 end
 
 function love.update(dt)

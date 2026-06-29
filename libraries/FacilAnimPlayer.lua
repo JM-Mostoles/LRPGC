@@ -1,6 +1,6 @@
 local FacilAnimPlayer = {}
 
-function FacilAnimPlayer.newAnimation(image, horizontalFrames, rows, rowToPlay, speed, xPos, yPos, pOffsetX, pOffsetY)
+function FacilAnimPlayer.newAnimationObject(image, horizontalFrames, rows, rowToPlay, speed, xPos, yPos, pOffsetX, pOffsetY)
     local newAnimatedObject =
     {
         image = image,

@@ -1,6 +1,6 @@
 local FacilPlayer = {}
 
-function FacilPlayer.new(playerWorld, pX, pY, pW, pH, pSpeed)
+function FacilPlayer.newColliderPlayer(playerWorld, pX, pY, pW, pH, pSpeed)
     local newPlayer = {
         body = love.physics.newBody(playerWorld, pX, pY, "dynamic"),
         shape = love.physics.newRectangleShape(pW, pH),
@@ -76,7 +76,7 @@ function FacilPlayer.new(playerWorld, pX, pY, pW, pH, pSpeed)
         self.body:setLinearVelocity(self.dx, self.dy)
     end
 
-    function newPlayer:draw(dt)
+    function newPlayer:draw()
         local x, y = self.body:getPosition()
         local x2, y2 = pW / 2, pH / 2
         love.graphics.rectangle(

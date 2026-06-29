@@ -11,7 +11,7 @@ local newFade
 function love.load()
 	local FacilFade = require("modules.FacilFade")
 
-	newFade = FacilFade.new(
+	newFade = FacilFade.newFadeObject(
 		(Start fully faded in?, a boolean), 
 		(Speed, int recommended), 
 		(red value, int recommended), 
@@ -20,7 +20,7 @@ function love.load()
 	)
 end
 ```
-By default, the .new() arguments are the following:
+By default, the .newFadeObject() arguments are the following:
 ```lua
 true, 1, 1, 1, 1
 ```
@@ -41,7 +41,7 @@ local FacilFade = require("libraries.FacilFade")
 
 local newFade
 function love.load()
-    newFade = FacilFade.new(false, 1, 1, 1, 1)
+    newFade = FacilFade.newFadeObject(false, 1, 1, 1, 1)
 end
 
 function love.update(dt)

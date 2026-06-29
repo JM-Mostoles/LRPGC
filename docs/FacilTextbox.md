@@ -11,7 +11,7 @@ local myTextbox
 function love.load()
 	local FacilTextbox = require("modules.FacilTextbox")
 
-	myTextbox = FacilTextbox.new(
+	myTextbox = FacilTextbox.newTextboxObject(
 		(Will appear at bottom?, a boolean), 
 		(Speed, int recommended), 
 		(lines, a table of strings), 
@@ -23,7 +23,7 @@ function love.load()
 end
 ```
 
-By default, the .new() arguments are the following:
+By default, the .newTextboxObject() arguments are the following:
 ```lua
 true, 2, {"Whats so green about this...", "Lorem ipsum dolor sit amet", "Morbi vestibulum euismod", "Sed malesuada augue lacus"}, 1, 1, 1, 1
 ```
@@ -53,7 +53,7 @@ local myTextbox
 
 function love.load()
 	local FacilTextbox = require("libraries.FacilTextbox")
-	myTextbox = FacilTextbox.new(true, 20, { "Like the wind", "you came running" }, 1, 1, 1, 1)
+	myTextbox = FacilTextbox.newTextboxObject(true, 20, { "Like the wind", "you came running" }, 1, 1, 1, 1)
 end
 
 function love.update(dt)

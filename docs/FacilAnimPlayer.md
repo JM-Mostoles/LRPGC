@@ -15,13 +15,13 @@ local Animation
 
 function love.load()
     --love.graphics.setDefaultFilter("nearest", "nearest") <- Not necessary but recommended for pixel art.
-    myNewAnimation = animLib.newAnimation(love.graphics.newImage("YOUR_IMAGE.png"), 4, 2, 1, 5, 20, 20, 7, 31)
+    myNewAnimation = animLib.newAnimationObject(love.graphics.newImage("YOUR_IMAGE.png"), 4, 2, 1, 5, 20, 20, 7, 31)
 ```
 
-The function .newAnimation recieves the following parameters;
+The function .newAnimationObject recieves the following parameters;
 
 ```lua
-    myNewAnimation = animLib.newAnimation(
+    myNewAnimation = animLib.newAnimationObject(
         (Image), 
         (Vertical frames, an integer value), 
         (Number of rows, an integer value), 
@@ -54,7 +54,7 @@ local myNewAnimation
 
 function love.load()
     love.graphics.setDefaultFilter("nearest", "nearest")
-    myNewAnimation = animLib.newAnimation(love.graphics.newImage("rs/boyagobb.png"), 4, 2, 1, 5, 150, 120, 7, 31)
+    myNewAnimation = animLib.newAnimationObject(love.graphics.newImage("rs/animation/boyagobb.png"), 4, 2, 1, 5, 150, 120, 7, 31)
 end
 
 function love.update(dt)
@@ -73,5 +73,4 @@ end
 function love.draw()
     myNewAnimation:play()
 end
-
 ```

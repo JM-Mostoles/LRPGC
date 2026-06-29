@@ -45,7 +45,7 @@ end
 local metaTimer = {}
 metaTimer.__index = FacilTimer_class
 
-function FacilTimer_class.new(startAt, finishAt, speed, loops, startPaused)
+function FacilTimer_class.newTimerObject(startAt, finishAt, speed, loops, startPaused)
 	local instance = setmetatable({}, metaTimer)
 
 	instance.startAt = startAt or 10
